@@ -134,10 +134,10 @@ percent = 0.643859
 first = SubResource("Resource_1tm61")
 second = SubResource("Resource_8ff4m")
 
-[sub_resource type="Resource" id="Resource_sg54a"]
+[sub_resource type="Resource" id="Resource_4fqyp"]
 resource_name = "Tabs"
 script = ExtResource("1_jxh43")
-names = PackedStringArray("Palettes")
+names = PackedStringArray("Palettes", "User Data Editor")
 
 [sub_resource type="Resource" id="Resource_gdwmg"]
 resource_name = "Split"
@@ -145,7 +145,7 @@ script = ExtResource("2_lw52w")
 direction = 1
 percent = 0.82948
 first = SubResource("Resource_e72nu")
-second = SubResource("Resource_sg54a")
+second = SubResource("Resource_4fqyp")
 
 [sub_resource type="Resource" id="Resource_acda3"]
 resource_name = "Split"
@@ -180,5 +180,6 @@ hidden_tabs = {
 "Perspective Editor": true,
 "Recorder": true,
 "Second Canvas": true,
-"Tiles": true
+"Tiles": true,
+"User Data Editor": true
 }

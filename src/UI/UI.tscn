@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bfbragmmdwfbl" path="res://src/UI/TilesPanel.tscn" id="23_wyr78"]
 [ext_resource type="PackedScene" uid="uid://dvpfnxblh1n3n" path="res://src/UI/3DObjectTree.tscn" id="24_bf5mq"]
 [ext_resource type="Script" uid="uid://bvvbi3x82xnut" path="res://addons/dockable_container/layout_split.gd" id="27"]
+[ext_resource type="PackedScene" uid="uid://br7emgyedrl7p" path="res://src/UI/UserDataEditor/UserDataEditor.tscn" id="27_bf5mq"]
 [ext_resource type="Script" uid="uid://bfi1mm158ge5l" path="res://addons/dockable_container/dockable_container.gd" id="35"]
 [ext_resource type="Script" uid="uid://da67x3ua6ietw" path="res://addons/dockable_container/layout_panel.gd" id="36"]
 [ext_resource type="Script" uid="uid://bssab6bm6lntw" path="res://src/UI/UI.gd" id="37"]
@@ -131,18 +132,18 @@ script = ExtResource("27")
 first = SubResource("Resource_6pwxm")
 second = SubResource("Resource_24rfh")
 
-[sub_resource type="Resource" id="Resource_ugja0"]
+[sub_resource type="Resource" id="Resource_bf5mq"]
 resource_name = "Tabs"
 script = ExtResource("36")
-names = PackedStringArray("Palettes")
+names = PackedStringArray("Palettes", "User Data Editor")
 
 [sub_resource type="Resource" id="Resource_hr77s"]
 resource_name = "Split"
 script = ExtResource("27")
 direction = 1
-percent = 0.692661
+percent = 0.7980769230769231
 first = SubResource("Resource_tcb26")
-second = SubResource("Resource_ugja0")
+second = SubResource("Resource_bf5mq")
 
 [sub_resource type="Resource" id="Resource_l8roh"]
 resource_name = "Split"
@@ -162,7 +163,7 @@ second = SubResource("Resource_l8roh")
 [sub_resource type="Resource" id="Resource_cwe4h"]
 resource_name = "Split"
 script = ExtResource("27")
-percent = 0.0103806
+percent = 0.01
 first = SubResource("Resource_xnnnd")
 second = SubResource("Resource_s2xu6")
 
@@ -176,7 +177,8 @@ hidden_tabs = {
 "Perspective Editor": true,
 "Recorder": true,
 "Reference Images": true,
-"Second Canvas": true
+"Second Canvas": true,
+"User Data Editor": true
 }
 
 [sub_resource type="ShaderMaterial" id="2"]
@@ -391,6 +393,10 @@ visible = false
 layout_mode = 2
 
 [node name="Recorder" parent="DockableContainer" unique_id=184365863 instance=ExtResource("13")]
+visible = false
+layout_mode = 2
+
+[node name="User Data Editor" parent="DockableContainer" unique_id=576426924 instance=ExtResource("27_bf5mq")]
 visible = false
 layout_mode = 2
 

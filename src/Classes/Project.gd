@@ -4,6 +4,7 @@ extends RefCounted
 ## A class for project properties.
 
 signal removed
+signal about_to_serialize
 signal serialized(dict: Dictionary)
 signal about_to_deserialize(dict: Dictionary)
 signal resized
@@ -264,6 +265,7 @@ func change_project() -> void:
 
 
 func serialize() -> Dictionary:
+	about_to_serialize.emit()
 	var layer_data := []
 	for layer in layers:
 		layer_data.append(layer.serialize())
