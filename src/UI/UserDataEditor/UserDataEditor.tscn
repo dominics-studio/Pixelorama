@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://br7emgyedrl7p"]
 
 [ext_resource type="Script" uid="uid://lqt0dv7ygpbs" path="res://src/UI/UserDataEditor/UserDataEditor.gd" id="1_qjdco"]
+[ext_resource type="Texture2D" uid="uid://bkghgfj8viy85" path="res://assets/graphics/misc/pin.png" id="2_jgp52"]
 
 [node name="User Data Editor" type="PanelContainer" unique_id=576426924]
 custom_minimum_size = Vector2(300, 0)
@@ -51,15 +52,39 @@ popup/item_5/text = "TileSet"
 popup/item_5/id = 5
 popup/item_5/disabled = true
 
+[node name="PinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=475565917]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Pin the focused user_data container"
+icon = ExtResource("2_jgp52")
+
+[node name="UnpinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1353038906]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+tooltip_text = "Name may be outdated"
+text = "Unpin"
+
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1476220393]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer" unique_id=240427377]
+[node name="PinnedTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer" unique_id=117073932]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/background_color = Color(0.72962487, 0.38876253, 0.65836346, 0.078431375)
+wrap_mode = 1
+
+[node name="MainTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer" unique_id=240427377]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 wrap_mode = 1
 
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="focus_exited" from="MarginContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_focus_exited"]
-[connection signal="text_changed" from="MarginContainer/VBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PinButton" to="." method="_on_pin_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/UnpinButton" to="." method="_on_unpin_button_pressed"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer/PinnedTextEdit" to="." method="save"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/PinnedTextEdit" to="." method="_on_pinned_text_edit_text_changed"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer/MainTextEdit" to="." method="save"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/MainTextEdit" to="." method="_on_text_edit_text_changed"]
