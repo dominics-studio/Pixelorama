@@ -79,6 +79,8 @@ func _cel_switched() -> void:
 	refresh_view()
 
 
+var cached_pinned_container: Object
+var cached_main_container: Object
 func refresh_view() -> void:
 	if not visible:
 		return
@@ -89,24 +91,29 @@ func refresh_view() -> void:
 
 	# Pinned box
 	if st.pinned_box != null:
+		if st.pinned_box.container != cached_pinned_container:
+			load_text_from_container(pinned_text_edit, st.pinned_box.container)
 		pinned_text_edit.visible = true
 		pin_button.disabled = true
-		load_text_from_container(pinned_text_edit, st.pinned_box.container)
 		unpin_button.text = "Unpin %s" % st.pinned_box.name
 		unpin_button.visible = true
+		cached_pinned_container = st.pinned_box.container
 	else:
 		pinned_text_edit.visible = false
 		pin_button.disabled = false
 		pinned_text_edit.text = ""
 		unpin_button.visible = false
+		cached_pinned_container = null
 
 
 	# Main box
 	main_text_edit.editable = current_box != null
 	
 	if current_box and not current_box.equals(st.pinned_box):
-		load_text_from_container(main_text_edit, current_box.container)
+		if current_box.container != cached_main_container:
+			load_text_from_container(main_text_edit, current_box.container)
 		main_text_edit.visible = true
+		cached_main_container = current_box.container
 	else:
 		main_text_edit.visible = false
 
